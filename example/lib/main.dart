@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_color_picker/my_color_slider.dart';
+import 'package:my_color_picker/my_color_picker.dart';
 
 void main() {
   runApp(const MyApp());

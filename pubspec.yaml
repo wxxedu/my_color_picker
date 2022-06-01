@@ -1,5 +1,5 @@
 name: my_color_picker
-description: A new Flutter package project.
+description: A color slider.
 version: 0.0.1
 homepage: null
 
@@ -10,8 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  measure_size: ^3.0.0
-  selectable_items: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
