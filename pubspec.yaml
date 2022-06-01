@@ -1,6 +1,6 @@
 name: my_color_picker
 description: A color slider.
-version: 0.0.1
+version: 0.0.2
 homepage: null
 
 environment:

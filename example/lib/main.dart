@@ -37,29 +37,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return PlatformScaffold(
       appBar: PlatformAppBar(
         title: Text(widget.title),
-        trailingActions: [
-          MyPopupIconButton(
-            isSelected: true,
-            icon: Icon(PlatformIcons(context).pen),
-            menuContent: MyColorPopupButton(
-              color: color,
-              isSelected: true,
-              onChanged: (Color? newColor) {
-                setState(() {
-                  color = newColor ?? color;
-                });
-              },
-            ),
-          )
-        ],
+        trailingActions: [],
       ),
       body: Center(
-        child: ColorPickerSlider(
-          onChanged: (val) {
-            print(val);
-          },
-          initialValue: 127,
-        ),
+        child: MyColorPickerMenu(),
       ),
     );
   }

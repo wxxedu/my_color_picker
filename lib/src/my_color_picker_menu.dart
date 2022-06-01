@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:my_color_picker/my_color_picker.dart';
-import 'package:my_color_picker/src/my_color_indicator_box.dart';
 
 class MyColorPickerMenu extends StatefulWidget {
   const MyColorPickerMenu({
@@ -21,13 +20,13 @@ class MyColorPickerMenu extends StatefulWidget {
 
 class _MyColorPickerMenuState extends State<MyColorPickerMenu> {
   late TextEditingController _controller;
-  Color? currentColor;
+  late Color currentColor;
   int currentAlpha = 255;
 
   @override
   void initState() {
     super.initState();
-    currentColor = widget.currentColor;
+    currentColor = widget.currentColor ?? Colors.black;
     currentAlpha = currentColor?.alpha ?? 255;
     _controller = TextEditingController(text: currentColor?.hex);
   }
@@ -42,6 +41,7 @@ class _MyColorPickerMenuState extends State<MyColorPickerMenu> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 200,
+      height: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -127,7 +127,7 @@ class _MyColorPickerMenuState extends State<MyColorPickerMenu> {
           ],
         ),
         const SizedBox(height: 10),
-        ColorPickerSlider(
+        MyColorSlider(
           width: 180,
           initialValue: currentValue,
           onChanged: onChanged,
@@ -141,7 +141,7 @@ class _MyColorPickerMenuState extends State<MyColorPickerMenu> {
   /// Called when the hex textfield is changed.
   void _onHexTextfieldChanged(String text) {
     setState(() {
-      currentColor = ColorX.fromHex(text, alpha: currentAlpha);
+      currentColor = ColorX.fromHex(text, alpha: currentAlpha) ?? currentColor;
     });
   }
 
@@ -149,40 +149,40 @@ class _MyColorPickerMenuState extends State<MyColorPickerMenu> {
     final clr = ColorX.fromHex(text, alpha: currentAlpha);
     setState(() {
       if (clr == null) {
-        _controller.text = currentColor?.hex ?? "";
+        _controller.text = currentColor.hex;
       } else {
         currentColor = clr;
-        _controller.text = currentColor!.hex;
+        _controller.text = currentColor.hex;
       }
     });
   }
 
   void _onRedChanged(int value) {
     setState(() {
-      currentColor = currentColor?.withRed(value);
-      _controller.text = currentColor?.hex ?? "";
+      currentColor = currentColor.withRed(value);
+      _controller.text = currentColor.hex;
     });
   }
 
   void _onGreenChanged(int value) {
     setState(() {
-      currentColor = currentColor?.withGreen(value);
-      _controller.text = currentColor?.hex ?? "";
+      currentColor = currentColor.withGreen(value);
+      _controller.text = currentColor.hex;
     });
   }
 
   void _onBlueChanged(int value) {
     setState(() {
-      currentColor = currentColor?.withBlue(value);
-      _controller.text = currentColor?.hex ?? "";
+      currentColor = currentColor.withBlue(value);
+      _controller.text = currentColor.hex;
     });
   }
 
   void _onAlphaChanged(int value) {
     setState(() {
       currentAlpha = value;
-      currentColor = currentColor?.withAlpha(value);
-      _controller.text = currentColor?.hex ?? "";
+      currentColor = currentColor.withAlpha(value);
+      _controller.text = currentColor.hex;
     });
   }
 

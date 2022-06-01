@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ColorPickerSlider extends StatefulWidget {
-  const ColorPickerSlider({
+class MyColorSlider extends StatefulWidget {
+  const MyColorSlider({
     Key? key,
     required this.onChanged,
     this.initialValue = 0,
@@ -24,10 +24,10 @@ class ColorPickerSlider extends StatefulWidget {
   final double sliderCornerRadius;
 
   @override
-  State<ColorPickerSlider> createState() => _ColorPickerSliderState();
+  State<MyColorSlider> createState() => _MyColorSliderState();
 }
 
-class _ColorPickerSliderState extends State<ColorPickerSlider> {
+class _MyColorSliderState extends State<MyColorSlider> {
   double _sliderPosition = 0.0;
   int _value = 0;
 
