@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:my_color_picker/my_color_picker.dart';
+import 'package:my_popup_menu/my_popup_menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const PlatformApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -35,18 +34,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return PlatformScaffold(
+      appBar: PlatformAppBar(
         title: Text(widget.title),
-        actions: [
-          MyColorPopupButton(
-            color: color,
+        trailingActions: [
+          MyPopupIconButton(
             isSelected: true,
-            onChanged: (Color? newColor) {
-              setState(() {
-                color = newColor ?? color;
-              });
-            },
+            icon: Icon(PlatformIcons(context).pen),
+            menuContent: MyColorPopupButton(
+              color: color,
+              isSelected: true,
+              onChanged: (Color? newColor) {
+                setState(() {
+                  color = newColor ?? color;
+                });
+              },
+            ),
           )
         ],
       ),
