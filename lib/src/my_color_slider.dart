@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:measure_size/measure_size.dart';
 
 class ColorPickerSlider extends StatefulWidget {
   const ColorPickerSlider({
@@ -150,7 +149,7 @@ class _ColorPickerSliderPainter extends CustomPainter {
 extension ColorX on Color {
   static Color mix(Color a, Color b, double ratio) {
     return Color.fromARGB(
-      (a.alpha * (1 - ratio) + b.alpha * ratio).round(),
+      255,
       (a.red * (1 - ratio) + b.red * ratio).round(),
       (a.green * (1 - ratio) + b.green * ratio).round(),
       (a.blue * (1 - ratio) + b.blue * ratio).round(),
