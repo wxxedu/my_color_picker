@@ -4,6 +4,7 @@ class ColorPickerSlider extends StatefulWidget {
   const ColorPickerSlider({
     Key? key,
     required this.onChanged,
+    this.initialValue = 0,
     this.indicatorRadius = 10.0,
     this.sliderCornerRadius = 2.5,
     this.width = 200,
@@ -16,6 +17,7 @@ class ColorPickerSlider extends StatefulWidget {
   final Color zeroColor;
   final Color fullColor;
   final Color borderColor;
+  final double initialValue;
   final double width;
   final double height;
   final double indicatorRadius;
@@ -28,6 +30,12 @@ class ColorPickerSlider extends StatefulWidget {
 class _ColorPickerSliderState extends State<ColorPickerSlider> {
   double _sliderPosition = 0.0;
   int _value = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _sliderPosition = widget.initialValue / 255 * widget.width;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -139,16 +147,5 @@ class _ColorPickerSliderPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
-  }
-}
-
-extension ColorX on Color {
-  static Color mix(Color a, Color b, double ratio) {
-    return Color.fromARGB(
-      255,
-      (a.red * (1 - ratio) + b.red * ratio).round(),
-      (a.green * (1 - ratio) + b.green * ratio).round(),
-      (a.blue * (1 - ratio) + b.blue * ratio).round(),
-    );
   }
 }

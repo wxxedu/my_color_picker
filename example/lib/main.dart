@@ -44,9 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(child: ColorPickerSlider(onChanged: (val) {
-        print(val);
-      })),
+      body: Center(
+        child: ColorPickerSlider(
+          onChanged: (val) {
+            print(val);
+          },
+          initialValue: 127,
+        ),
+      ),
     );
   }
 }
