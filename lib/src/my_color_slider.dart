@@ -17,7 +17,7 @@ class ColorPickerSlider extends StatefulWidget {
   final Color zeroColor;
   final Color fullColor;
   final Color borderColor;
-  final double initialValue;
+  final int initialValue;
   final double width;
   final double height;
   final double indicatorRadius;
