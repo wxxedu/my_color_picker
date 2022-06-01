@@ -27,8 +27,8 @@ class _MyColorPickerMenuState extends State<MyColorPickerMenu> {
   void initState() {
     super.initState();
     currentColor = widget.currentColor ?? Colors.black;
-    currentAlpha = currentColor?.alpha ?? 255;
-    _controller = TextEditingController(text: currentColor?.hex);
+    currentAlpha = currentColor.alpha;
+    _controller = TextEditingController(text: currentColor.hex);
   }
 
   @override
@@ -47,7 +47,7 @@ class _MyColorPickerMenuState extends State<MyColorPickerMenu> {
         children: [
           Row(
             children: [
-              MyColorIndicatorBox(currentColor: currentColor ?? Colors.white),
+              MyColorIndicatorBox(currentColor: currentColor),
               const SizedBox(width: 10),
               PlatformText(
                 "HEX:",
@@ -67,33 +67,33 @@ class _MyColorPickerMenuState extends State<MyColorPickerMenu> {
           const SizedBox(height: 20),
           buildColorSlider(
             "Red",
-            currentValue: currentColor?.red ?? 0,
-            zeroColor: currentColor?.zeroRed ?? Colors.black,
-            fullColor: currentColor?.fullRed ?? Colors.red,
+            currentValue: currentColor.red,
+            zeroColor: currentColor.zeroRed,
+            fullColor: currentColor.fullRed,
             onChanged: _onRedChanged,
           ),
           const SizedBox(height: 20),
           buildColorSlider(
             "Green",
-            currentValue: currentColor?.green ?? 0,
-            zeroColor: currentColor?.zeroGreen ?? Colors.black,
-            fullColor: currentColor?.fullGreen ?? Colors.green,
+            currentValue: currentColor.green,
+            zeroColor: currentColor.zeroGreen,
+            fullColor: currentColor.fullGreen,
             onChanged: _onGreenChanged,
           ),
           const SizedBox(height: 20),
           buildColorSlider(
             "Blue",
-            currentValue: currentColor?.blue ?? 0,
-            zeroColor: currentColor?.zeroBlue ?? Colors.black,
-            fullColor: currentColor?.fullBlue ?? Colors.blue,
+            currentValue: currentColor.blue,
+            zeroColor: currentColor.zeroBlue,
+            fullColor: currentColor.fullBlue,
             onChanged: _onBlueChanged,
           ),
           const SizedBox(height: 20),
           buildColorSlider(
             "Alpha",
             currentValue: currentAlpha,
-            zeroColor: Colors.black,
-            fullColor: Colors.white,
+            zeroColor: currentColor.withAlpha(0),
+            fullColor: currentColor.withAlpha(255),
             onChanged: _onAlphaChanged,
           ),
           const SizedBox(height: 20),
