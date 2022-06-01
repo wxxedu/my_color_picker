@@ -108,7 +108,7 @@ class _ColorPickerSliderPainter extends CustomPainter {
 
     // add a border to the rounded rectangle
     final Paint borderPainter = Paint()
-      ..color = fullColor
+      ..color = borderColor
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
     canvas.drawRRect(
@@ -133,15 +133,6 @@ class _ColorPickerSliderPainter extends CustomPainter {
       Offset(sliderPosition, size.height / 2),
       indicatorRadius,
       borderPainter,
-    );
-
-    // draw a circle of radius canvas.size.width / 2 at the slider position with the color of the current color
-    final Paint colorPainter = Paint()
-      ..color = ColorX.mix(zeroColor, fullColor, sliderPosition / size.width);
-    canvas.drawCircle(
-      Offset(sliderPosition, size.height / 2),
-      size.height / 2,
-      colorPainter,
     );
   }
 
