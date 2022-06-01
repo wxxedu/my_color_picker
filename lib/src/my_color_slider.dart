@@ -10,10 +10,12 @@ class ColorPickerSlider extends StatefulWidget {
     this.height = 10,
     this.zeroColor = Colors.white,
     this.fullColor = Colors.black,
+    this.borderColor = Colors.grey,
   }) : super(key: key);
   final Function(int) onChanged;
   final Color zeroColor;
   final Color fullColor;
+  final Color borderColor;
   final double width;
   final double height;
   final double indicatorRadius;
@@ -45,6 +47,7 @@ class _ColorPickerSliderState extends State<ColorPickerSlider> {
             fullColor: widget.fullColor,
             indicatorRadius: widget.indicatorRadius,
             cornerRadius: widget.sliderCornerRadius,
+            borderColor: widget.borderColor,
           ),
         ),
       ),
@@ -74,11 +77,13 @@ class _ColorPickerSliderPainter extends CustomPainter {
   final Color fullColor;
   final double indicatorRadius;
   final double cornerRadius;
+  final Color borderColor;
 
   const _ColorPickerSliderPainter({
     required this.sliderPosition,
     required this.zeroColor,
     required this.fullColor,
+    required this.borderColor,
     this.indicatorRadius = 10.0,
     this.cornerRadius = 2.0,
   });
@@ -103,7 +108,7 @@ class _ColorPickerSliderPainter extends CustomPainter {
 
     // add a border to the rounded rectangle
     final Paint borderPainter = Paint()
-      ..color = ColorX.mix(zeroColor, fullColor, 0.2)
+      ..color = fullColor
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
     canvas.drawRRect(
