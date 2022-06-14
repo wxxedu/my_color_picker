@@ -96,7 +96,6 @@ class _MyColorPickerMenuState extends State<MyColorPickerMenu> {
             fullColor: currentColor.withAlpha(255),
             onChanged: _onAlphaChanged,
           ),
-          const SizedBox(height: 20),
         ],
       ),
     );
